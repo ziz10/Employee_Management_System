@@ -352,3 +352,40 @@ require("console.table");
     loadMainPrompts();
   }
   
+  async function addDepartment() {
+    const department = await prompt([
+      {
+        name: "name",
+        message: "What is the name of the department?"
+      }
+    ]);
+  
+    await db.createDepartment(department);
+  
+    console.log(`Added ${department.name} to the database`);
+  
+    loadMainPrompts();
+  }
+  
+  async function removeDepartment() {
+    const departments = await db.findAllDepartments();
+  
+    const departmentChoices = departments.map(({ id, name }) => ({
+      name: name,
+      value: id
+    }));
+  
+    const { departmentId } = await prompt({
+      type: "list",
+      name: "departmentId",
+      message:
+        "Which department would you like to remove?",
+      choices: departmentChoices
+    });
+  
+    await db.removeDepartment(departmentId);
+  
+    console.log(`Removed department from the database`);
+  
+    loadMainPrompts();
+  }
