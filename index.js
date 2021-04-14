@@ -318,3 +318,37 @@ require("console.table");
         loadMainPrompts();
       }
       
+  async function removeRole() {
+    const roles = await db.findAllRoles();
+  
+    const roleChoices = roles.map(({ id, title }) => ({
+      name: title,
+      value: id
+    }));
+  
+    const { roleId } = await prompt([
+      {
+        type: "list",
+        name: "roleId",
+        message:
+          "Which role do you want to remove? (Warning: This will also remove employees)",
+        choices: roleChoices
+      }
+    ]);
+  
+    await db.removeRole(roleId);
+  
+    console.log("Removed role from the database");
+  
+    loadMainPrompts();
+  }
+  
+  async function viewDepartments() {
+    const departments = await db.findAllDepartments();
+  
+    console.log("\n");
+    console.table(departments);
+  
+    loadMainPrompts();
+  }
+  
