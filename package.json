@@ -1,0 +1,24 @@
+{
+  "name": "my_cms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ziz10/my_cms.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ziz10/my_cms/issues"
+  },
+  "homepage": "https://github.com/ziz10/my_cms#readme",
+  "dependencies": {
+    "asciiart-logo": "^0.2.6",
+    "inquirer": "^8.0.0",
+    "mysql": "^2.18.1"
+  }
+}
